@@ -1,0 +1,73 @@
+# Contact App
+
+Esta aplicación es un gestor de contactos que permite crear usuarios, también crear, editar, y eliminar contactos para el mismmo usuario, así como sincronizar los contactos del dispositivo.
+
+## Estructura del Proyecto
+
+La estructura del proyecto está organizada en módulos y carpetas para facilitar la mantenibilidad y escalabilidad de la aplicación.
+
+### 📂 lib/
+Contiene todo el código fuente de la aplicación.
+
+#### 📂 ui/
+Directorio principal que contiene las pantallas y widgets de la interfaz de usuario.
+
+- **auth/**: Módulo donde se manejarán las pantallas y lógica de autenticación.
+  
+- **home/**: Contiene la interfaz de usuario principal una vez que el usuario está autenticado. Dentro de `home`, se encuentran los subdirectorios:
+  
+  - **widgets/**: Contiene componentes reutilizables y específicos para las pantallas de `home`.
+    
+    - **contact/**: Módulo que maneja todo lo relacionado con los contactos.
+      - **model/**: Incluye los modelos de datos relacionados con los contactos, como `ContactModel`, que define la estructura de un contacto en la aplicación.
+      - **widgets/**: Incluye widgets específicos para la funcionalidad de contactos.
+    
+    - **user_profile/**: Módulo que contiene widgets y modelos para gestionar el perfil de usuario.
+      - **model/**: Contiene los modelos de datos relacionados con el usuario, como `UserModel`.
+    
+    - **home_page.dart**: Pantalla principal del módulo `home`.
+
+#### 📂 utils/
+Este directorio contiene utilidades y componentes auxiliares que son reutilizables en toda la aplicación.
+
+- **db/**: Contiene la configuración y lógica de la base de datos.
+  
+- **mixins/**: Almacena funcionalidades auxiliares que pueden ser aplicadas a múltiples clases, como `validation_mixin.dart` para validaciones de formularios.
+
+- **routes/**: Contiene la configuración de rutas de la aplicación en `routes.dart`, facilitando la navegación entre pantallas.
+
+- **theme/**: Define los temas y constantes de estilo de la aplicación.
+
+- **widgets/**: Incluye widgets reutilizables en diferentes partes de la aplicación, como:
+  - `custom_elevated_button.dart`: Un botón personalizado.
+  - `custom_text_form_field.dart`: Un campo de formulario personalizado.
+  - `snackbar_helper.dart`: Utilidad para mostrar notificaciones rápidas (Snackbars).
+
+#### main.dart
+El punto de entrada de la aplicación.
+
+## Dependencias utilizadas
+
+- shared_preferences: Almacenamiento simple para datos locales (usado para controlar el estado de la sesión).
+- local_auth: Autenticación biométrica en la app.
+- local_auth_android: Compatibilidad de local_auth en Android.
+- local_auth_darwin: Compatibilidad de local_auth en iOS/macOS.
+- sqflite: Base de datos SQLite para almacenamiento persistente.
+- image_picker: Permite capturar y seleccionar imágenes.
+- flutter_secure_storage: Almacenamiento seguro para datos sensibles.
+- flutter_slidable: Listas deslizables con acciones.
+- permission_handler: Manejo de permisos en dispositivos móviles.
+- contacts_service: Acceso y gestión de contactos del dispositivo.
+
+## Instalación y Ejecución
+
+1. **Instalar dependencias**
+    flutter pub get
+2. **Ejecutar la aplicación**
+    flutter run
+
+## Notas adicionales
+
+- La aplicación está probada en Android
+- En el archivo db_helper.dart la línea 40 (comentada) se puede usar para hacer un limpiado rápido de la db y realizar las pruebas pertinentes con esto
+- En el archivo home_page.dart las líneas 36, 46-49 (comentadas) se pueden usar para hacer un print de los usuarios registrados en la db y verificar la información base de estos.
